@@ -24,7 +24,15 @@ namespace xml_editor
                 if(dialog.ShowDialog() == DialogResult.OK)
                 {
                     FilePath = dialog.FileName;
+                    
+                    DataSet dataSet = new DataSet();
+                    dataSet.ReadXml(FilePath);
+                    dataGridView1.DataSource = dataSet.Tables[0];
+
+
                     textBox1.Text = File.ReadAllText(FilePath);
+
+
                 }
             }
 
@@ -85,5 +93,8 @@ namespace xml_editor
                 }
             }
         }
+
+
     }
 }
+//https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument.validate?view=netcore-3.1
