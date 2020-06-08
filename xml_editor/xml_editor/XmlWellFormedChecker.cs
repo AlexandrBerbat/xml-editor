@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
-using System.IO;
-using System.Windows.Forms;
+﻿using System.IO;
 using System.Xml;
-using System.Xml.Schema;
+using System.Windows.Forms;
 
 namespace xml_editor
 {
@@ -32,6 +25,32 @@ namespace xml_editor
                 }
             }
 
+        }
+
+        public void CheckToWellFormedOutput()
+        {
+            if (CheckToWellFormed() == true)
+            {
+                MessageBox.Show(
+                    "XML документ соответствует правилам Well Formed",
+                    "Проверка на Well Formed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly
+                    );
+            }
+            if (CheckToWellFormed() == false)
+            {
+                MessageBox.Show(
+                    "XML документ оформлен неверно!",
+                    "Проверка на Well Formed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly
+                    );
+            }
         }
 
         public XmlWellFormedChecker(string ExFileName, string ExText)
